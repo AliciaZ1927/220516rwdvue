@@ -2,7 +2,7 @@
   
   <div class="container d-flex justify-content-center">
 
-    <img class="img-fluid m-5 " src="/images/banner.jpg" alt="夜蝴蝶館">
+    <img class="img-fluid m-5 " src="../assets/images/banner.jpg" alt="夜蝴蝶館">
 
 
   </div>
