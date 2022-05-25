@@ -1,7 +1,7 @@
 <template>
 
   <div class="container col-6 col-md-4 p-5 login">
-    <form class="needs-validation" novalidate>
+    <form class="needs-validation">
       <div>
 
         <label for="Account" class="form-label">帳號</label>

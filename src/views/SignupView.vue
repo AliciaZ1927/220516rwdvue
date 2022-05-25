@@ -3,7 +3,7 @@
         <div class="container d-flex flex-column p-5 signup">
 <h2>會員註冊</h2>
 
-    <form class="row g-3 needs-validation" novalidate>
+    <form class="row g-3 needs-validation">
         <div class="col-md-4">
           <label for="account" class="form-label">帳號</label>
           <input type="text" class="form-control" id="account" placeholder="請輸入帳號" required>
