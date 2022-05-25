@@ -1,5 +1,9 @@
 # 220516rwdvuejs
 
+## VeeValidate表單驗證影片
+github page 無法運作
+https://drive.google.com/file/d/1roHQkbF1V6FDnTF_nkIKbwVMthyXO5RH/view?usp=sharing
+
 ## Project setup
 ```
 npm install
