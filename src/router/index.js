@@ -8,6 +8,9 @@ import LoginView from '../views/LoginView.vue'
 import CartView from '../views/CartView.vue'
 import FavoriteView from '../views/FavoriteView.vue'
 
+import LogintestView from '../views/LogintestView.vue'
+
+
 
 
 const routes = [
@@ -50,6 +53,11 @@ const routes = [
     path: '/favorite',
     name: 'Favorite',
     component: FavoriteView
+  },
+  {
+    path: '/logintest',
+    name: 'Logintest',
+    component: LogintestView
   }
 ]
 

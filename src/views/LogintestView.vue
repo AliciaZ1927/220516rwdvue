@@ -7,13 +7,13 @@
         <div class="col-md-4">
           <label for="account" class="form-label">帳號</label>
           <Field type="text" class="form-control" name="Account" id="account" placeholder="請輸入帳號" :rules="validateAccount"/>  
-          <p class="text-danger"><ErrorMessage name="Account" /></p>       
+          <p><ErrorMessage name="Account" /></p>       
         </div>
         
         <div class="col-md-4">
           <label for="password" class="form-label">密碼</label>
           <Field type="password" class="form-control" name="Password" id="password" placeholder="請輸入密碼" :rules="validatePassword"/>          
-        <p class="text-danger"><ErrorMessage name="Password" /></p>
+        <p><ErrorMessage name="Password" /></p>
         </div>
         <div class="col-md-4">
           <label for="validationCustomUsername" class="form-label">使用者名稱</label>
@@ -21,19 +21,31 @@
             <span class="input-group-text" id="inputGroupPrepend">@</span>
             <Field type="text" class="form-control" name="Username" id="validationCustomUsername" placeholder="請輸入使用者名稱" :rules="validateUsername"/>            
           </div>
-        <p class="text-danger"><ErrorMessage name="Username"/></p>
+        <p><ErrorMessage name="Username"/></p>
         </div>
         <div class="col-md-6">
             <label for="email" class="form-label">Email</label>
             <Field type="email" class="form-control" name="email" id="email" placeholder="請輸入正確email格式" :rules="validateEmail"/>
-        <p class="text-danger"><ErrorMessage name="email"/></p>
+        <p><ErrorMessage name="email"/></p>
           </div>
           <div class="col-md-6">
             <label for="address" class="form-label">地址</label>
             <Field type="text" class="form-control" name="address" id="address" placeholder="請輸入地址" :rules="validateAddress"/>
-        <p class="text-danger"><ErrorMessage name="address"/></p>
+        <p><ErrorMessage name="address"/></p>
             </div>
 
+
+        <div class="col-12">
+          <div class="form-check">
+            <Field class="form-check-input" type="checkbox" name="check" id="invalidCheck" :rules="validateCheck"/>
+            <label class="form-check-label" for="invalidCheck">
+              同意網站使用條款
+            </label>
+        <p><ErrorMessage name="check"/></p>
+
+            
+          </div>
+        </div>
         <div class="col-12">
           <button class="btn btn-primary" type="submit">申請會員</button>
         </div>
@@ -93,6 +105,12 @@
     validateAddress(value) {
       if (!value) {
         return "請輸入地址";
+      }
+      return true;
+    },
+    validateCheck(value, event) {
+      if (event.target.checked) {
+        return "提交申請前須先同意";
       }
       return true;
     },
