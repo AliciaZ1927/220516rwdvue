@@ -1,6 +1,6 @@
 <template>
    <header class="container-fluid d-flex justify-content-between">
-    <div class="logo"><router-link to="/"><img src="../images/logo.jpeg" alt="蝴蝶seba"></router-link></div>
+    <div class="logo"><router-link to="/"><img src="/.././images/logo.jpeg" alt="蝴蝶seba"></router-link></div>
     <div>
 
     <ul class="nav nav-justified">

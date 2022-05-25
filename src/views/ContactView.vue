@@ -3,7 +3,7 @@
   <div class="row d-flex justify-content-center">
 
     <div class="text-center mt-5 mb-5">
-      <img src="../images/seba.jpg" class="rounded" alt="...">
+      <img src="/.././images/seba.jpg" class="rounded" alt="...">
     </div>
 
     <div class="btn-group btn-group-lg col-7 col-sm-6 col-md-6 mt-5 mb-5" role="group" aria-label="Basic example">
