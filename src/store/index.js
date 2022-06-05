@@ -12,7 +12,7 @@ export default createStore({
       return Object.values(state.cart).reduce((acc, {quantity}) => acc + quantity, 0)
     },
     totalPrice(state){
-      return Object.values(state.cart).reduce((acc, {quantity, price}) => acc + quantity * price, 0)
+      return Object.values(state.cart).reduce((acc, {quantity, Price}) => acc + quantity * Price, 0)
     }
   },
   mutations: {
@@ -20,7 +20,7 @@ export default createStore({
       state.products = payload
     },
     setCart(state, payload){
-      state.cart[payload.id] = payload
+      state.cart[payload.Id] = payload
     },
     clearCart(state){
       state.cart = {}
@@ -35,7 +35,7 @@ export default createStore({
       } 
     },
     setList(state, payload){
-      state.list[payload.id] = payload
+      state.list[payload.Id] = payload
     },
     remove(state, payload){
       
@@ -46,7 +46,7 @@ export default createStore({
   actions: {
     async fetchData({commit}){
       try {
-        const res = await fetch('api.json')
+        const res = await fetch('http://localhost:5000/api/zhous')
         const data = await res.json()
         commit('setProduct', data)
       } catch (error) {
@@ -54,13 +54,13 @@ export default createStore({
       }
     },
     addToCart({commit, state}, product){
-      state.cart.hasOwnProperty(product.id) 
-      ? product.quantity = state.cart[product.id].quantity + 1 
+      state.cart.hasOwnProperty(product.Id) 
+      ? product.quantity = state.cart[product.Id].quantity + 1 
       : product.quantity = 1
       commit('setCart', product)
     },
     addToList({commit, state},product){
-      if(!state.list.hasOwnProperty(product.id)){
+      if(!state.list.hasOwnProperty(product.Id)){
         product.quantity = 1
       } 
     

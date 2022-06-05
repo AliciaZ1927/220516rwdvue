@@ -14,7 +14,7 @@
             <tbody id="items">
 
                 <Item
-                v-for="item in items" :key="item.id" :item="item"
+                v-for="item in items" :key="item.Id" :item="item"
                 />
             </tbody>
             <tfoot>

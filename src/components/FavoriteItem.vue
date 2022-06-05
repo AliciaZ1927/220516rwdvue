@@ -1,10 +1,10 @@
 <template>
   <tr>
-    <th scope="row">{{favorite.id}}</th>
-    <td>{{favorite.title}}</td>
-    <td>{{favorite.price}}</td>
+    <th scope="row">{{favorite.Id}}</th>
+    <td>{{favorite.Name}}</td>
+    <td>{{favorite.Price}}</td>
     <td>
-        <button class="btn btn-danger btn-sm" @click="remove(favorite.id)">
+        <button class="btn btn-danger btn-sm" @click="remove(favorite.Id)">
             <i class="bi bi-heartbreak"></i>
         </button>
         
@@ -26,7 +26,7 @@ export default {
       store.dispatch('addToCart', favorite)
     }
     
-    const remove = id => {store.commit('remove', id)}
+    const remove = Id => {store.commit('remove', Id)}
 
     return {add, remove}
   }

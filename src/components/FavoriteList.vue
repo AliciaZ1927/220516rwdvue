@@ -16,7 +16,7 @@
             <tbody id="favorites">
 
                 <FavoriteItem
-                v-for="favorite in favorites" :key="favorite.id" :favorite="favorite"
+                v-for="favorite in favorites" :key="favorite.Id" :favorite="favorite"
                 />
             </tbody>
             

@@ -1,17 +1,17 @@
 <template>
   <tr>
-    <th scope="row">{{item.id}}</th>
-    <td>{{item.title}}</td>
+    <th scope="row">{{item.Id}}</th>
+    <td>{{item.Name}}</td>
     <td>{{item.quantity}}</td>
     <td>
-        <button class="btn btn-info btn-sm" @click="increase(item.id)">
+        <button class="btn btn-info btn-sm" @click="increase(item.Id)">
             +
         </button>
-        <button class="btn btn-danger btn-sm" @click="reduce(item.id)">
+        <button class="btn btn-danger btn-sm" @click="reduce(item.Id)">
             -
         </button>
     </td>
-    <td>${{item.price * item.quantity}}</td>
+    <td>${{item.Price * item.quantity}}</td>
   </tr>
 </template>
 
@@ -22,8 +22,8 @@ export default {
   props: ['item'],
   setup(){
     const store = useStore()
-    const increase = id => {store.commit('increase', id)}
-    const reduce = id => {store.commit('reduce', id)}
+    const increase = Id => {store.commit('increase', Id)}
+    const reduce = Id => {store.commit('reduce', Id)}
 
     return {increase, reduce}
   }

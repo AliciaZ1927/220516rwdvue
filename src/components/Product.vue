@@ -1,11 +1,11 @@
 <template>
   <div class="col-12 col-sm-6 col-md-3 d-flex align-content-stretch flex-wrap g-5">
     <div class="card">
-      <img :src="product.thumbnailUrl" :alt="`image-${product.title}`" class="card-img-top">
+      <img :src="product.imgUrl" :alt="`image-${product.Name}`" class="card-img-top">
       <div class="card-body">
         
-        <h5 class="card-title">{{ product.title }}</h5>
-        <p class="card-text">$<span>{{ product.price }}</span><p>{{product.description}}</p>
+        <h5 class="card-title">{{ product.Name }}</h5>
+        <p class="card-text">$<span>{{ product.Price }}</span><p>{{product.Description}}</p>
         </p>
         
         
