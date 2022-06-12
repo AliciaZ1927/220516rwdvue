@@ -50,7 +50,7 @@ export default createStore({
         const data = await res.json()
         commit('setProduct', data)
       } catch (error) {
-        
+        console.log("error")
       }
     },
     addToCart({commit, state}, product){
@@ -65,7 +65,21 @@ export default createStore({
       } 
     
       commit('setList', product)
-    }
+    },
+    async login({commit}, userdata){
+      try {
+        const res = await fetch("http://localhost:5000/api/login", {
+          method: "post",
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userdata),
+        })
+        const resDB =  await res.json()
+      } catch (error) {
+        console.log(error)
+      }
+    },
   },
   modules: {
   }

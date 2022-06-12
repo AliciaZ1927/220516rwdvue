@@ -1,23 +1,23 @@
 <template>
 
   <div class="container col-6 col-md-4 p-5 login">
-    <Form @submit="onSubmit">
+    <Form @submit.prevent="login">
       <div>
 
         <label for="Account" class="form-label">帳號</label>
-        <Field type="text" class="form-control" name="Account" id="Account" :rules="validateAccount"/>
+        <Field type="text" class="form-control" name="Account" id="Account" v-model="userdata.Account" :rules="validateAccount"/>
          <p class="text-danger"><ErrorMessage name="Account" /></p>
 
         <div>
 
           <label for="Password" class="form-label">密碼</label>
-          <Field type="text" class="form-control" name="Password" id="Password" :rules="validatePassword"/>
+          <Field type="password" class="form-control" name="Password" id="Password" v-model="userdata.Password" :rules="validatePassword"/>
          <p class="text-danger"><ErrorMessage name="Password" /></p>
           <div>
             <label for="validationServerUsername" class="form-label">使用者名稱</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend3">@</span>
-              <Field type="text" class="form-control" name="Username" id="validationServerUsername" :rules="validateUsername"/>
+              <Field type="text" class="form-control" name="Username" id="validationServerUsername" v-model="userdata.Name" :rules="validateUsername"/>
               
             </div>
             <p class="text-danger"><ErrorMessage name="Username" /></p>
@@ -44,18 +44,29 @@
  
    <script>
     import { Form, Field, ErrorMessage } from 'vee-validate';
+    import axios from "axios";
+import { mapActions } from 'vuex';
 
 
     export default {
+      name:"Login",
     components: {
         Form,
         Field,
         ErrorMessage
   },
+  data() {
+    return {
+      userdata: {
+        Name: "",
+        Password: "",
+        Account: "",
+      },
+
+      users: [],
+    };
+  },
     methods: {
-    onSubmit(values) {
-      console.log("submitted");
-    },
     validateAccount(value) {
       if (!value) {
         return "請輸入帳號";
@@ -74,7 +85,14 @@
       }
       return true;
     },
-
+    // async Login() {
+    //   await axios({
+    //     method: "post",
+    //     url: "http://localhost:5000/api/login",
+    //     data: this.userdata,
+    //   })
+    // },
+    ...mapActions(['login'])
   },
 };
 

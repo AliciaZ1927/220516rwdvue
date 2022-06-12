@@ -3,39 +3,39 @@
         <div class="container d-flex flex-column p-5 signup">
 <h2>會員註冊</h2>
 
-    <Form class="row g-3" @submit="onSubmit">
+    <Form class="row g-3" @submit="Add">
         <div class="col-md-4">
           <label for="account" class="form-label">帳號</label>
-          <Field type="text" class="form-control" name="Account" id="account" placeholder="請輸入帳號" :rules="validateAccount"/>  
+          <Field type="text" class="form-control" name="Account" id="account" placeholder="請輸入帳號" :rules="validateAccount" v-model="userdata.Account"/>  
           <p class="text-danger"><ErrorMessage name="Account" /></p>       
         </div>
         
         <div class="col-md-4">
           <label for="password" class="form-label">密碼</label>
-          <Field type="password" class="form-control" name="Password" id="password" placeholder="請輸入密碼" :rules="validatePassword"/>          
+          <Field type="password" class="form-control" name="Password" id="password" placeholder="請輸入密碼" :rules="validatePassword" v-model="userdata.Password"/>          
         <p class="text-danger"><ErrorMessage name="Password" /></p>
         </div>
         <div class="col-md-4">
           <label for="validationCustomUsername" class="form-label">使用者名稱</label>
           <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <Field type="text" class="form-control" name="Username" id="validationCustomUsername" placeholder="請輸入使用者名稱" :rules="validateUsername"/>            
+            <Field type="text" class="form-control" name="Username" id="validationCustomUsername" placeholder="請輸入使用者名稱" :rules="validateUsername" v-model="userdata.Name"/>            
           </div>
         <p class="text-danger"><ErrorMessage name="Username"/></p>
         </div>
         <div class="col-md-6">
             <label for="email" class="form-label">Email</label>
-            <Field type="email" class="form-control" name="email" id="email" placeholder="請輸入正確email格式" :rules="validateEmail"/>
+            <Field type="email" class="form-control" name="email" id="email" placeholder="請輸入正確email格式" :rules="validateEmail" v-model="userdata.Email"/>
         <p class="text-danger"><ErrorMessage name="email"/></p>
           </div>
           <div class="col-md-6">
             <label for="address" class="form-label">地址</label>
-            <Field type="text" class="form-control" name="address" id="address" placeholder="請輸入地址" :rules="validateAddress"/>
+            <Field type="text" class="form-control" name="address" id="address" placeholder="請輸入地址" :rules="validateAddress" v-model="userdata.Address"/>
         <p class="text-danger"><ErrorMessage name="address"/></p>
             </div>
 
         <div class="col-12">
-          <button class="btn btn-primary" type="submit">申請會員</button>
+          <button class="btn btn-primary">申請會員</button>
         </div>
       </form>
 
@@ -46,6 +46,7 @@
  
    <script>
     import { Form, Field, ErrorMessage } from 'vee-validate';
+    import axios from "axios";
 
 
     export default {
@@ -54,9 +55,25 @@
         Field,
         ErrorMessage
   },
+  data() {
+    return {
+      userdata: {
+        UserName: "",
+        UserPassword: "",
+        UserEmail: "",
+        UserAddress: "",
+      },
+
+      users: [],
+    };
+  },
     methods: {
-    onSubmit(values) {
-      console.log("submitted");
+    async Add() {
+      await axios({
+        method: "post",
+        url: "http://localhost:5000/api/miUs",
+        data: this.userdata,
+      })
     },
     validateAccount(value) {
       if (!value) {

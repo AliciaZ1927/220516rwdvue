@@ -13,7 +13,8 @@ alias: {
 // webpack 使用 jQuery，如果是自行下載的
 // 'jquery': path.resolve(__dirname, '../src/assets/libs/jquery/jquery.min'),
 // 如果使用NPM安裝的jQuery
-'jquery': 'jquery' 
+'jquery': 'jquery' ,
+
 }
 },
 // 增加一個plugins
