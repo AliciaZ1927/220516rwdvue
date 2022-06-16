@@ -3,7 +3,7 @@
         <div class="container d-flex flex-column p-5 signup">
 <h2>會員註冊</h2>
 
-    <Form class="row g-3" @submit="Add">
+    <Form class="row g-3" @submit="Signup">
         <div class="col-md-4">
           <label for="account" class="form-label">帳號</label>
           <Field type="text" class="form-control" name="Account" id="account" placeholder="請輸入帳號" :rules="validateAccount" v-model="userdata.Account"/>  
@@ -38,7 +38,7 @@
           <button class="btn btn-primary">申請會員</button>
         </div>
       </form>
-
+{{userdata}}
 </div>
     
     
@@ -58,20 +58,21 @@
   data() {
     return {
       userdata: {
-        UserName: "",
-        UserPassword: "",
-        UserEmail: "",
-        UserAddress: "",
+        Name: "",
+        Password: "",
+        Account: "",
+        Email: "",
+        Address: "",
       },
 
       users: [],
     };
   },
     methods: {
-    async Add() {
+    async Signup() {
       await axios({
         method: "post",
-        url: "http://localhost:5000/api/miUs",
+        url: "http://localhost:5001/api/auth/signup",
         data: this.userdata,
       })
     },

@@ -6,7 +6,7 @@
             清空購物車
         </button>
         <br>
-        <button class="btn btn-success btn-sm" id="vaciar-carrito" @click="sentCart">
+        <button class="btn btn-success btn-sm" id="vaciar-carrito" @click="sentCart(orderdata)">
             送出訂單
         </button>
     </td>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { useStore } from 'vuex'
+import { useStore, mapState } from 'vuex'
 import { computed, onMounted } from 'vue';
 import axios from 'axios';
 
@@ -29,11 +29,14 @@ export default{
 
         }
     },
+    computed: {
+        ...mapState(['token'])
+    },
     methods: {
         async sentCart() {
             await axios({
                 method: "post",
-                url: "http://localhost:5000/api/mics",
+                url: "http://localhost:5001/api/mios",
                 data: this.orderdata,
             })
             .then(this.$router.push({ path : '/'}))

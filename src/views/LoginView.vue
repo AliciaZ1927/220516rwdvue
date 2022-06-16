@@ -1,23 +1,23 @@
 <template>
 
   <div class="container col-6 col-md-4 p-5 login">
-    <Form @submit.prevent="login">
+    <Form @submit="Login(user)">
       <div>
 
         <label for="Account" class="form-label">帳號</label>
-        <Field type="text" class="form-control" name="Account" id="Account" v-model="userdata.Account" :rules="validateAccount"/>
+        <Field type="text" class="form-control" name="Account" id="Account" v-model="user.Account" :rules="validateAccount"/>
          <p class="text-danger"><ErrorMessage name="Account" /></p>
 
         <div>
 
           <label for="Password" class="form-label">密碼</label>
-          <Field type="password" class="form-control" name="Password" id="Password" v-model="userdata.Password" :rules="validatePassword"/>
+          <Field type="password" class="form-control" name="Password" id="Password" v-model="user.Password" :rules="validatePassword"/>
          <p class="text-danger"><ErrorMessage name="Password" /></p>
           <div>
             <label for="validationServerUsername" class="form-label">使用者名稱</label>
             <div class="input-group has-validation">
               <span class="input-group-text" id="inputGroupPrepend3">@</span>
-              <Field type="text" class="form-control" name="Username" id="validationServerUsername" v-model="userdata.Name" :rules="validateUsername"/>
+              <Field type="text" class="form-control" name="Username" id="validationServerUsername" v-model="user.Name" :rules="validateUsername"/>
               
             </div>
             <p class="text-danger"><ErrorMessage name="Username" /></p>
@@ -38,14 +38,14 @@
     </Form>
   </div>
 
-
+{{user}}
     
 </template>
  
    <script>
     import { Form, Field, ErrorMessage } from 'vee-validate';
     import axios from "axios";
-import { mapActions } from 'vuex';
+    import { mapActions } from 'vuex';
 
 
     export default {
@@ -57,13 +57,13 @@ import { mapActions } from 'vuex';
   },
   data() {
     return {
-      userdata: {
+      user: {
         Name: "",
         Password: "",
         Account: "",
       },
 
-      users: [],
+
     };
   },
     methods: {
@@ -85,14 +85,7 @@ import { mapActions } from 'vuex';
       }
       return true;
     },
-    // async Login() {
-    //   await axios({
-    //     method: "post",
-    //     url: "http://localhost:5000/api/login",
-    //     data: this.userdata,
-    //   })
-    // },
-    ...mapActions(['login'])
+    ...mapActions(['Login']),
   },
 };
 

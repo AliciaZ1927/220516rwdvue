@@ -4,8 +4,9 @@ export default createStore({
   state: {
     products: [],
     cart: {},
-    list: {}
-
+    list: {},
+    token: null,
+    userinfo: []
   },
   getters: {
     totalQuantity(state){
@@ -41,12 +42,18 @@ export default createStore({
       
         delete state.list[payload]
       
+    },
+    setToken(state, payload){
+      state.token = payload
+    },
+    setUserinfo(state, payload){
+      state.userinfo = payload
     }
   },
   actions: {
     async fetchData({commit}){
       try {
-        const res = await fetch('http://localhost:5000/api/zhous')
+        const res = await fetch('http://localhost:5001/api/books')
         const data = await res.json()
         commit('setProduct', data)
       } catch (error) {
@@ -66,26 +73,55 @@ export default createStore({
     
       commit('setList', product)
     },
-    async login({commit}, userdata){
+    async Login({commit}, user){
+      console.log(user)
       try {
-        const res = await fetch("http://localhost:5000/api/login", {
-          method: "post",
+        const res = await fetch('http://localhost:5001/api/auth/login', {
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(userdata),
+          body: JSON.stringify(user)
         })
-        const resDB =  await res.json()
+        const resDB = await res.json()
+        console.log(resDB.token);
+
+        commit('setToken', resDB.token)
+
+        localStorage.setItem('token', resDB.token)
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     },
+    readToken({ commit }) {
+      if(localStorage.getItem('token')) {
+        commit('setToken', localStorage.getItem('token'))
+      } else {
+        commit('setToken', null)
+      }
+    },
+    async userInfo({commit}){
+      try {
+        const token = localStorage.getItem('token')
+        const res = await fetch('http://localhost:5001/api/auth/admin', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+        })
+        const data = await res.json()
+        commit('setUserinfo', data)
+      } catch (error) {
+        console.log("error")
+      }
+    }
   },
   modules: {
   }
 })
 
-
+// ! TODO: refresh token
 
 // las mutaciones solo para modificar states
 // las mutaciones se llaman atraves de commit

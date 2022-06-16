@@ -8,6 +8,8 @@
       <li class="nav-item p-1"><router-link to="/signup"><i class="bi bi-person-plus-fill"></i></router-link> </li>
       <li class="nav-item p-1"><router-link to="/favorite"><i class="bi bi-clipboard-heart-fill"></i></router-link></li>
       <li class="nav-item p-1"><router-link to="/cart"><i class="bi bi-cart"></i></router-link></li>
+      <li class="nav-item p-1"><router-link to="/member">會員</router-link></li>
+
     </ul>
 
 

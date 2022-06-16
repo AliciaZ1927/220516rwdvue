@@ -1,14 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '../store'
+
 import IndexView from '../views/IndexView.vue'
 import AboutView from '../views/AboutView.vue'
 import ProductView from '../views/ProductView.vue'
 import ContactView from '../views/ContactView.vue'
 import SignupView from '../views/SignupView.vue'
 import LoginView from '../views/LoginView.vue'
+
+import MemberView from '../views/MemberView.vue'
 import CartView from '../views/CartView.vue'
 import FavoriteView from '../views/FavoriteView.vue'
 
-import LogintestView from '../views/LogintestView.vue'
+
 
 
 
@@ -55,15 +59,25 @@ const routes = [
     component: FavoriteView
   },
   {
-    path: '/logintest',
-    name: 'Logintest',
-    component: LogintestView
+    path: '/member',
+    name: 'Member',
+    component: MemberView,
+    meta: {protectedRoute: true}
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const routeprotected = to.matched.some(item => item.meta.protectedRoute)
+  if(routeprotected && store.state.token === null){
+    next('/')
+  } else {
+    next()
+  }
 })
 
 export default router
