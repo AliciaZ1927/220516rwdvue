@@ -9,7 +9,7 @@
   
   <Carousel/>
 
-  <div class="goTop container-fluid d-flex justify-content-end">
+  <div class="goTop d-flex justify-content-end">
     <a href="#" class="goTopBtn jq-goTop">
       <i class="bi bi-arrow-up-circle-fill"></i>
     </a>
@@ -28,4 +28,27 @@ export default {
 };
 
 
+
 </script>
+
+<style scoped>
+
+.goTop {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    font-size: 2rem;
+    
+    
+  }
+  .goTopBtn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .bi-arrow-up-circle-fill {
+    color: rgb(193, 173, 230);
+  }
+
+</style>

@@ -2,7 +2,7 @@
 
 <div class="container my-5">
         <h4>最愛清單</h4>
-        <table class="table table-hover">
+        <table class="table table-light table-hover">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -46,3 +46,4 @@ export default {
 
 
 </script>
+

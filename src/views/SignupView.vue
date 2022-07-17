@@ -3,7 +3,7 @@
         <div class="container d-flex flex-column p-5 signup">
 <h2>會員註冊</h2>
 
-    <Form class="row g-3" @submit="Signup">
+    <Form class="row g-3 mt-5" @submit="Signup">
         <div class="col-md-4">
           <label for="account" class="form-label">帳號</label>
           <Field type="text" class="form-control" name="Account" id="account" placeholder="請輸入帳號" :rules="validateAccount" v-model="userdata.Account"/>  
@@ -35,10 +35,10 @@
             </div>
 
         <div class="col-12">
-          <button class="btn btn-primary">申請會員</button>
+          <button class="button-74">申請會員</button>
         </div>
       </form>
-{{userdata}}
+
 </div>
     
     
@@ -74,7 +74,7 @@
         method: "post",
         url: "http://localhost:5001/api/auth/signup",
         data: this.userdata,
-      })
+      }).then(this.$router.push({ path : '/login'}))
     },
     validateAccount(value) {
       if (!value) {
@@ -118,3 +118,41 @@
 };
 
   </script>
+
+<style scoped>
+
+.button-74 {
+  background-color: #b3c7f2;
+  border: 2px solid #000442;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: rgb(225, 227, 244);
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+</style>

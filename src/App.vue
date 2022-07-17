@@ -27,3 +27,16 @@ export default {
 
 
 </script>
+
+<style>
+
+* {
+  box-sizing: border-box;
+  background: rgb(209, 220, 254);
+}
+a, a:link{
+    text-decoration: none;
+}
+
+
+</style>

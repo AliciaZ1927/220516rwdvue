@@ -1,115 +1,21 @@
 /* elements */
-:root {
-    ---color1:#F8F1E7;
-    ---color2:#38A2B6;
-    ---color3:#25598B;
-    ---color4:#AED678;
-    ---color5:#33302C;
-    ---black:#000000;
-    
-}
 
-* {
-    box-sizing: border-box;
-}
 
-body {
-    color: var(---color5);
-    background: var(---color1);
-}
-
-a, a:link{
-    text-decoration: none;
-}
 
 /* 共用class */
 
 
 
-/* page index */
-
-/* header */
-
-header{
-    padding: 10px;
-}
-
-header a{
-    padding:  20px;
-}
-
-.logo{
-    padding: 20px;
-    margin-left: 20px;
-    
-}
-.logo img{
-    width: 50px;
-    height: 50px;
-}
-
-.logo a:hover{
-    opacity: 0.7;
-}
-/* navbar */
 
 
 
-nav{
-    margin-right: 50px;
-}
-
-nav a:hover{
-    opacity: 0.7;
-}
-
-/* carousel slide */
-
-
-
-
-/*  about  */
 
 
 /* top button */
-.goTop {
-    position: fixed;
-    right: 10px;
-    bottom: 10px;
-    font-size: 2rem;
-    
-    
-  }
-  .goTopBtn {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-  .bi-arrow-up-circle-fill {
-    color: lightblue;
-  }
+
 
 /* page product */
-.add_cart{
-    margin:10px;
-}
-pre{
-    word-wrap:break-word;
-}
-.buycart{
-    width: 500px;
-    background: lightblue;
-    border-radius: 20px;
-    border: inset 5px rgba(62, 67, 242, 1);
-}
-.line{
-    border-bottom: #25598B;
-}
-.totalbox{
-    
-    border-bottom:#25598B;
-}
+
 /* page contact */
 
 /* page login */

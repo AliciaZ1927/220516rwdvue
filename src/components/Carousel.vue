@@ -72,8 +72,24 @@
   </div>
 </template>
 
-<script>
+<style scoped>
 
 
-</script>
+
+h2 {
+  color: rgb(102, 101, 101);
+  animation: neon 5s infinite;
+}
+@keyframes neon {
+  0%, 39%, 41%, 59%, 61%, 100% {
+    text-shadow:
+    rgb(255, 255, 255) 0 0 15px,
+    rgb(0, 38, 255) 0 0 30px,
+    rgb(0, 38, 255) 0 0 40px;
+  }
+  20%, 60% {
+    text-shadow: none;
+  }
+}
+</style>
 

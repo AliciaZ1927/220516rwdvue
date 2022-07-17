@@ -1,7 +1,6 @@
 <template>
 <div class="container my-5">
-        <h4>購物車</h4>
-        <table class="table">
+        <table class="table table-light">
             <thead>
             <tr>
                 <th scope="col">#</th>

@@ -1,5 +1,5 @@
 <template>
-<div class="container-fluid">
+<div class="container-fluid ">
 <h1 class="text-center m-5">禁咒師系列</h1>
 <hr>
 <div class="row">
@@ -11,6 +11,11 @@
 </div>
 
 </div>
+ <div class="goTop d-flex justify-content-end">
+    <a href="#" class="goTopBtn jq-goTop">
+      <i class="bi bi-arrow-up-circle-fill"></i>
+    </a>
+  </div>
 </template>
 
 <script>
@@ -39,3 +44,26 @@ export default{
 
 // trabajar con composition api se necesita setup
 </script>
+
+
+<style scoped>
+
+.goTop {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    font-size: 2rem;
+    
+    
+  }
+  .goTopBtn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .bi-arrow-up-circle-fill {
+    color: rgb(193, 173, 230);
+  }
+
+</style>

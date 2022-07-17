@@ -1,4 +1,6 @@
 import { createStore } from 'vuex'
+import router from '../router'
+
 
 export default createStore({
   state: {
@@ -85,12 +87,13 @@ export default createStore({
         })
         const resDB = await res.json()
         console.log(resDB.token);
-
         commit('setToken', resDB.token)
-
         localStorage.setItem('token', resDB.token)
+
+        return router.push({ path : '/'})
       } catch (error) {
         console.log(error);
+
       }
     },
     readToken({ commit }) {
@@ -115,7 +118,26 @@ export default createStore({
       } catch (error) {
         console.log("error")
       }
-    }
+    },
+    async logout({commit}){
+      try {
+        const token = localStorage.getItem('token')
+        const res = await fetch('http://localhost:5001/api/auth/logout', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+        })
+        const clear = await res.json()
+        localStorage.removeItem('token')
+        console.log(clear);
+        return router.push({ path : '/'})
+
+      } catch (error) {
+        console.log("error")
+      }
+    },
   },
   modules: {
   }
